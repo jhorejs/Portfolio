@@ -1,0 +1,23 @@
+\o Program:		@(#)$CDS: libManager version 6.1.8 - CAT37 08/16/2019 17:05 (sjfhw025) $
+\o Sub version:		sub-version  s053 
+\o Arguments:		-mpssession virtuoso23465 -mpshost mo.ece.pdx.edu 
+\o Working Directory:	mo.ece.pdx.edu:/u/jhorejs/FreePDK45/ncsu_basekit/cdssetup
+\o 64-bit offsets
+\o Qt version: 		5.9.1
+\o Log file is "/u/jhorejs/FreePDK45/ncsu_basekit/cdssetup/libManager.log".
+\o Opening libManager window.
+\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libSearchSubstringButton->value = t
+\a nrResizeWindow(cdsLibManager list(0 25 515 532))
+\o changeWorkingDir("/u/jhorejs/FreePDK45/ncsu_basekit/cdssetup") unnecessary.
+\o ddSetForcedLib("") unnecessary.
+\o MPS service: map window
+\o Library Manager customization server connected.
+\a nrResizeWindow(cdsLibManager list(0 25 867 661))
+\a nrResizeWindow(cdsLibManager list(0 25 870 660))
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrSetWindowVisibility(cdsLibManager "hide")
+\a _lmgrCloseIconify("cdsLibManager" 1)
+\o MPS service: shutdown
+\o libManager is exiting.
+\a exit(0)

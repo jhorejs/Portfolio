@@ -1,0 +1,100 @@
+.text
+.global _start
+.global INT_DIRECTOR
+_start:
+
+	LDR R13, =STACK1
+	ADD R13, R13, #0x1000
+	CPS #0x12
+
+	LDR R13, =STACK2
+	ADD R13, R13, #0x1000
+	CPS #0x13
+@ Turn on GPIO1 CLK
+	LDR R0, =0x02
+	LDR R1, =0x44E000AC
+	STR R0, [R1]
+
+@ Initialize the output bit as off with C
+	LDR R0, =0x4804C000		@ GPIO1 OE register
+	ADD R4, R0, #0x190		@ 190 is the GPIO1_CLEARDATAOUT register
+	MOV R7, #0x002000000	@ Load 1 to set bit GPIO1_21 turning off LED0
+	STR R7, [R4]			@ Write to GPIO1 output enable register
+
+@ Program GPIO1_21 as output
+	ADD R1, R0, #0x0134
+	LDR R6, [R1]
+	LDR R7, =0xFE1FFFFF
+	AND R6, R7, R6
+	STR R6, [R1]
+
+@ Detect falling edge on GPIO1_14 and enable to assert POINTEREND1
+	ADD R1, R0, #0x14C
+	MOV R2, #0x00004000
+	LDR R3, [R1]
+	ORR R3, R3, R2
+	STR R3, [R1]
+	ADD R1, R0, #0x34
+	STR R2, [R1]
+
+@ Initialize INTC
+	LDR R1, =0x482000E8
+	MOV R2, #0x04
+	STR R2, [R1]
+
+@ Make sure processor IRQ enabled in CPSR
+	MRS R3, CPSR
+	BIC R3, #0x80
+	MSR CPSR_c, R3
+
+@ Wait for interrupt
+LOOP: NOP
+	B LOOP
+INT_DIRECTOR:
+	STMFD SP!, {R0-R3, LR}
+	LDR R0, =0x482000F8
+	LDR R1, [R0]
+	TST R1, #0x00000004
+	BEQ PASS_ON
+	LDR R0, =0x4804C02C
+	LDR R1, =0x00004000
+	BNE BUTTON_SVC
+	BEQ PASS_ON
+PASS_ON:
+	LDMFD SP!, {R0-R3, LR}
+	SUBS PC, LR, #4
+BUTTON_SVC:
+	MOV R1, #0x00004000
+	STR R1, [R0]
+@Turn off NEWIRQA bit in INTC_CONTROL, so processor can respond to new IRQ
+	LDR R0, =0x48200048
+	MOV R1, #01
+	STR R1, [R0]
+@ Turn on LED0 GPIO1_12
+	LDR R0, =0x4804C194
+	MOV R1, #0x00001000
+	STR R1, [R0]
+@ Wait 2 seconds
+	MOV R2, #0x00400000
+LOOP2:
+	NOP
+	SUBS R2, #1
+	BNE LOOP2
+@turn off LED on GPIO1_12
+	LDR R0, =0x4804C190
+	STR R1, [R0]
+@Return to wait loop
+	LDMFD SP!, {R0-R3, LR}
+	SUBS PC, LR, #4
+.align 2
+SYS_IRQ: .WORD 0
+.data
+.align 2
+STACK1: .rept 1024
+		.word 0x0000
+		.endr
+STACK2: .rept 1024
+		.word 0x0000
+		.endr
+.END
+

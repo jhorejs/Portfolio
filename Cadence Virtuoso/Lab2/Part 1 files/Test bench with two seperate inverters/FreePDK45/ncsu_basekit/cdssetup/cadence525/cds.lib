@@ -1,0 +1,15 @@
+DEFINE analogLib $CDSHOME/tools/dfII/etc/cdslib/artist/analogLib
+DEFINE US_8ths   $CDSHOME/tools/dfII/etc/cdslib/sheets/US_8ths
+DEFINE basic     $CDSHOME/tools/dfII/etc/cdslib/basic
+DEFINE cdsDefTechLib $CDSHOME/tools/dfII/etc/cdsDefTechLib
+DEFINE NCSU_TechLib_FreePDK45  $PDK_DIR/ncsu_basekit/lib/NCSU_TechLib_FreePDK45
+DEFINE NCSU_Devices_FreePDK45  $PDK_DIR/ncsu_basekit/lib/NCSU_Devices_FreePDK45
+#Removed by ddDeleteObj: DEFINE Inverter_Test_1 /u/jhorejs/FreePDK45/ncsu_basekit/cdssetup/cadence525/Inverter_Test_1
+DEFINE Inverter_RLoad /u/jhorejs/FreePDK45/ncsu_basekit/cdssetup/cadence525/Inverter_RLoad
+DEFINE group17_resistive /u/jhorejs/FreePDK45/ncsu_basekit/cdssetup/cadence525/group17_resistive
+DEFINE Finding_NMOS_VTL_equiv_Resistance /u/jhorejs/FreePDK45/ncsu_basekit/cdssetup/cadence525/Finding_NMOS_VTL_equiv_Resistance
+DEFINE group17_enhancement /u/jhorejs/FreePDK45/ncsu_basekit/cdssetup/cadence525/group17_enhancement
+DEFINE group17_enhancement_Long /u/jhorejs/FreePDK45/ncsu_basekit/cdssetup/cadence525/group17_enhancement_Long
+DEFINE group17_resistive_Long /u/jhorejs/FreePDK45/ncsu_basekit/cdssetup/cadence525/group17_resistive_Long
+DEFINE Inverter_CMOS_1 /u/jhorejs/FreePDK45/ncsu_basekit/cdssetup/cadence525/Inverter_CMOS_1
+DEFINE group17_Lab2 /u/jhorejs/FreePDK45/ncsu_basekit/cdssetup/cadence525/group17_Lab2

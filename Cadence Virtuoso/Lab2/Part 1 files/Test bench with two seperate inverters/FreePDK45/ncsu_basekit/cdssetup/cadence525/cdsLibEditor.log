@@ -1,0 +1,41 @@
+\o Program:		@(#)$CDS: cdsLibEditor version 6.1.8 - CAT37 08/16/2019 17:07 (sjfhw025) $
+\o Sub version:		sub-version  s053 
+\o Arguments:		-display :11 -mpssession virtuoso24263 -mpshost mo.ece.pdx.edu -namespace CDBA -cdslib /u/jhorejs/FreePDK45/ncsu_basekit/cdssetup/cadence525/cds.lib 
+\o Working Directory:	mo.ece.pdx.edu:/u/jhorejs/FreePDK45/ncsu_basekit/cdssetup/cadence525
+\o 64-bit offsets
+\a nrSetWindowVisibility(cdsLibEditor "show")
+\o Qt version: 		5.9.1
+\a nrSetCurrentWindow(cdsLibEditor)
+\a nrListItemAction(cdsLibEditor->mainTable 0 0)
+\o Active cell: 0 0 "analogLib"
+\a nrResizeWindow(cdsLibEditor list(2 52 500 400))
+\a nrResizeWindow(cdsLibEditor list(2 52 782 650))
+\a nrResizeWindow(cdsLibEditor list(2 52 778 642))
+\a nrResizeWindow(cdsLibEditor list(2 52 773 633))
+\a nrResizeWindow(cdsLibEditor list(2 52 766 628))
+\a nrSetCurrentWindow(cdsLibEditor)
+\a nrListItemAction(cdsLibEditor->mainTable 13 1)
+\o Active cell: 13 1 "/u/jhorejs/FreePDK45/ncsu_basekit/cdssetup/cadence525/group17_Lab2"
+\a nrListItemRename(cdsLibEditor->mainTable, 13 1 "c")
+\o QUESTION (CLE-200): The directory "c" \ndoesn't exist. If other tools use this file, \nan error will occur unless you either create \nthe directory you have specified or change the \npath to an existing directory. \n\nDo you want to create a new library? 
+\a nrSetWindowVisibility(needCreateDialog "show")
+\a nrSetCurrentWindow(needCreateDialog)
+\a nrResizeWindow(needCreateDialog list(208 239 350 200))
+\a needCreateDialog->noButton->value = t
+\a nrSetCurrentWindow(cdsLibEditor)
+\a nrResizeWindow(needCreateDialog list(0 0 350 200))
+\a nrListItemAction(cdsLibEditor->mainTable 14 1)
+\o Active cell: 14 1 ""
+\a cdsLibEditor->editUndoButton->value = t
+\a nrListItemAction(cdsLibEditor->mainTable 14 0)
+\o Active cell: 14 0 ""
+\a nrListItemAction(cdsLibEditor->mainTable 13 1)
+\o Active cell: 13 1 "/u/jhorejs/FreePDK45/ncsu_basekit/cdssetup/cadence525/group17_Lab2"
+\a nrSetWindowVisibility(cdsLibEditor "hide")
+\a nrSetWindowVisibility(cdsLibEditor "show")
+\a nrSetCurrentWindow(cdsLibEditor)
+\a nrResizeWindow(cdsLibEditor list(414 57 766 628))
+\a nrSetCurrentWindow(cdsLibEditor)
+\a nrResizeWindow(cdsLibEditor list(874 41 766 628))
+\a nrSetCurrentWindow(cdsLibEditor)
+\a nrResizeWindow(cdsLibEditor list(871 43 766 628))

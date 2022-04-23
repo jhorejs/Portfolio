@@ -1,0 +1,105 @@
+%% Problem 2 
+    clc; clear all; 
+    syms n z a
+    f = ((5/6)^n);
+    u = heaviside(n-2);
+    ztrans(f) % Discovered, z-tfm doesn't require heaviside. Time shift 
+   
+    % Partial fraction decomposition
+    xz = 25/(6*z*(6*z-5));
+    partfrac(xz,z)
+    
+    %Pole zeroes, ROC: H(z)=B(z)/A(z)
+    b = [0 0 25]; 
+    a = [36 -30 0];
+    H = zplane(b,a);
+    pzmap(H)
+    grid on
+ 
+    
+ %% Problem 2.1.2 using symsum
+   clc; 
+    a = sym( 'a');
+    n = sym( 'n');
+    z = sym( 'z');
+    assume(a > 0)
+    assumeAlso(a < 1)
+    assumeAlso(a < z)
+    
+    f = ((5/6)^n);
+    Z = symsum(f*z^(-n),n,0,inf)
+    Z = simplify(Z,'steps',20)
+
+ %% Problem 2.2 
+   clc; clear all; 
+    a = sym( 'a');
+    n = sym( 'n');
+    z = sym( 'z');
+    
+    
+    assume(a > 0)
+    assumeAlso(a < 1)
+    assumeAlso(a < z)
+    
+    Z = symsum((-(n)^3+3^(n))*z^(-n),n,1,3)
+
+ %% Problem 3
+    clc; clear all; 
+    a = sym( 'a');
+    n = sym( 'n');
+    z = sym( 'z');
+    
+    
+    assume(a > 0)
+    assumeAlso(a < 1)
+    assumeAlso(a < z)
+    
+    Z = symsum((heaviside(n)-heaviside(n-1))*z^(-n),n,-inf,inf);
+    Z = simplify(Z,'steps',100)
+    
+%% Problem 4.b
+    clc; clear all; 
+    
+    n = -1:1:20;
+    a= (-0.8).^n;
+    
+    stem(n,a)
+    
+    
+%% Problem 4.c
+
+clc; clear all;
+figure
+n = linspace(0,20,21)';
+Z = exp(-0.0526803.*n).*(1.05409.*sin((pi.*n)/2) - 0.5.*cos((pi.*n)/2));
+stem(n,Z)
+
+
+%% Problem 5
+zer = .9*exp(1+2*pi*(j*[-.4 .4]')); 
+pol = [-2.5 3]';
+[b,a] = zp2tf(zer,pol,1);
+fvtool(b,a)
+zplane(zer,pol)
+
+    
+%% Problem 6.1
+    clc; clear all;
+    b = [0 ;1 ; -2]'; 
+    a = [1 ;.5 ; 0]';
+    Z = zplane(b,a)
+    G = tf(b,a)
+    pzmap(Z)
+    grid on
+    
+%%  Problem 6.2
+    clc; clear all;
+    b = [1 ; 4 ; 8]'; %numerator
+    a = [1 ;-.5 ; -7.5]';%denominator
+    Z = zplane(b,a)
+    G = tf(b,a)
+    pzmap(Z)
+    grid on
+    
+
+    
